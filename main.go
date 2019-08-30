@@ -31,10 +31,10 @@ func main() {
 			// To run "go run *.go mg"
 			Name:    "create-migrations",
 			Aliases: []string{"mg"},
-			Usage:   "command -- mg [app] [accountNumber] [schema]",
+			Usage:   "command -- mg [app] [schema]",
 			Action: func(c *cli.Context) error {
-				if os.Args[2] != "" && os.Args[3] != "" && os.Args[4] != "" {
-					err := execute(os.Args[2], os.Args[3], os.Args[4], postgres.CreateMigration, pgtables)
+				if os.Args[2] != "" && os.Args[3] != "" {
+					err := execute(os.Args[2], "", os.Args[3], postgres.CreateMigration, pgtables)
 
 					if err != nil {
 						panic(err)
@@ -48,10 +48,10 @@ func main() {
 			// To run "go run *.go sd"
 			Name:    "create-seeds",
 			Aliases: []string{"sd"},
-			Usage:   "command -- sd [app] [accountNumber] [schema]",
+			Usage:   "command -- sd [app] [schema]",
 			Action: func(c *cli.Context) error {
-				if os.Args[2] != "" && os.Args[3] != "" && os.Args[4] != "" {
-					err := execute(os.Args[2], os.Args[3], os.Args[4], postgres.CreateSeed, pgtables)
+				if os.Args[2] != "" && os.Args[3] != "" {
+					err := execute(os.Args[2], "", os.Args[3], postgres.CreateSeed, pgtables)
 
 					if err != nil {
 						panic(err)
@@ -65,10 +65,10 @@ func main() {
 			// To run "go run *.go ps"
 			Name:    "postgres-seed",
 			Aliases: []string{"ps"},
-			Usage:   "command -- ps [app] [accountNumber] [schema]",
+			Usage:   "command -- ps [app] [schema]",
 			Action: func(c *cli.Context) error {
-				if os.Args[2] != "" && os.Args[3] != "" && os.Args[4] != "" {
-					err := execute(os.Args[2], os.Args[3], os.Args[4], postgres.SeedPostGresWithMongo, pgtables)
+				if os.Args[2] != "" && os.Args[3] != "" {
+					err := execute(os.Args[2], "", os.Args[3], postgres.SeedPostGresWithMongo, pgtables)
 
 					if err != nil {
 						panic(err)
@@ -82,10 +82,10 @@ func main() {
 			// To run "go run *.go ms"
 			Name:    "mongo-seed",
 			Aliases: []string{"ms"},
-			Usage:   "command -- ms [app] [accountNumber] [schema]",
+			Usage:   "command -- ms [app] [schema]",
 			Action: func(c *cli.Context) error {
-				if os.Args[2] != "" && os.Args[3] != "" && os.Args[4] != "" {
-					err := execute(os.Args[2], os.Args[3], os.Args[4], mongo.SeedMongoWithPostGres, mstables)
+				if os.Args[2] != "" && os.Args[3] != "" {
+					err := execute(os.Args[2], "", os.Args[3], mongo.SeedMongoWithPostGres, mstables)
 
 					if err != nil {
 						panic(err)
@@ -99,12 +99,12 @@ func main() {
 			// To run "go run *.go cm"
 			Name:    "create-master",
 			Aliases: []string{"cm"},
-			Usage:   "command -- cm [app] [accountNumber] [schema]",
+			Usage:   "command -- cm [app] [schema]",
 			Action: func(c *cli.Context) error {
-				if os.Args[2] != "" && os.Args[3] != "" && os.Args[4] != "" {
+				if os.Args[2] != "" && os.Args[3] != "" {
 					var pgdb postgres.Postgres
 					pgdb.Init(os.Args[2])
-					err := master.CreateMaster(os.Args[2], os.Args[3], os.Args[4], pgdb)
+					err := master.CreateMaster(os.Args[2], "", os.Args[3], pgdb)
 
 					if err != nil {
 						panic(err)

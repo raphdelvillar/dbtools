@@ -8,4 +8,5 @@ require (
 	github.com/jinzhu/inflection v1.0.0
 	github.com/urfave/cli v1.20.0
 	gopkg.in/mgo.v2 v2.0.0-20180705113604-9856a29383ce
+	mellium.im/sasl v0.2.1 // indirect
 )
