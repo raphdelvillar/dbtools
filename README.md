@@ -1,6 +1,6 @@
 # What dbtools can do ?
-- create sql migration files from go structs
-- create sql seeder files from mongo dumps
+- create postgres sql migration files from go structs
+- create postgres sql seeder files from mongo dumps
 - seed postgres db with mongo dumps 
 
 # Library Required
