@@ -10,7 +10,7 @@ go get -tags 'postgres' -u github.com/golang-migrate/migrate/cmd/migrate
 
 This will create a timestamp_schema.*.sql file under database/migrations folder
 
-make create-migration $(app) $(accountNumber) $(schema)
+make create-migration $(app) $(schema)
 
 # RUN MIGRATIONS
 
@@ -23,10 +23,10 @@ make drop_migration<br />
 
 This will create a timestamp_schema.sql file under database/seeds folder
 
-make create-seed $(app) $(accountNumber) $(schema)
+make create-seed $(app) $(schema)
 
 # MONGO TO POSTGRES
 
 This will create a dump folder with mongo data then populate the db according to the models
 
-make mongo-postgres $(app) $(accountNumber) $(schema)
+make mongo-postgres $(app) $(schema)
