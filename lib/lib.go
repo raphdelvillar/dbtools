@@ -38,3 +38,4 @@ func ReadJSON(dbmodel string, filepath string, f fn) ([]interface{}, interface{}
 
 	return data, tableprops, nil
 }
+	

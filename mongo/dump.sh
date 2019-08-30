@@ -25,7 +25,7 @@ function run() {
 function dump() {
   if [[ " ${APPS[*]} " == *"sample"* ]]
   then
-    dumpdb "sample" HRM_DATABASES[@]
+    dumpcol "sample" SAMPLE_COLLECTIONS[@]
   fi
 }
 
@@ -36,7 +36,7 @@ function dumpdb() {
         echo "-----------------------------"
         echo -e "${CYAN}Dumping $database ...${NC}"
         COLLECTION="${APP^^}_${database^^}[@]"
-        dumpcol "$ACCOUNT_NUMBER-${database}" $APP ${COLLECTION}
+        dumpcol "${database}" $APP ${COLLECTION}
     done
 }
 
@@ -51,7 +51,7 @@ function dumpcol() {
         COLNAME=${collection}
         if [ "$4" != "" ]
         then
-           COLNAME=${ACCOUNT_NUMBER}-${collection}
+           COLNAME=${collection}
         fi
 
         echo ${COLAPP}
